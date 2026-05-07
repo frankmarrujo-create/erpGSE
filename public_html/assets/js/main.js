@@ -114,8 +114,30 @@
         });
     }
     
+    function validaFormSubmit(idform, reglas){
+        $(document).off("submit", `#${idform}`).on("submit", `#${idform}`, function(e) {
+            const form = this;
+            e.preventDefault(); // evita recarga
+
+            const esValido = validators.validarFormulario(form, reglas);
+            activarValidacionFormulario(form, e);
+            
+            if(!esValido){
+                Alertas.error("Corrige los campos marcados");
+                return;
+            }
+            
+            const formData = new FormData(this);
+
+            console.log("Formulario enviado");
+            console.log([...formData.entries()]);
+
+            // Aquí puedes hacer AJAX después
+        });
+    }
+    
     //Validacion del formulario con las clases de bootstrap
-    function validarFormulario(form, e){
+    function activarValidacionFormulario(form, e){
         //Validacion de formulario
         if (!form.checkValidity()) {
             e.preventDefault();

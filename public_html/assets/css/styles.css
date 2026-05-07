@@ -207,6 +207,20 @@
         margin-top: 1rem;
     }
     
+    /*contenedores creados dinamicamente*/
+    .form-container-sm {
+        max-width: 30rem;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* versión mediana */
+    .form-container-md {
+        max-width: 45rem;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
     /* ≈ 992px */
     @media (max-width: 992px) {
         /* Forzamos que el logo se oculte de inmediato en móviles */

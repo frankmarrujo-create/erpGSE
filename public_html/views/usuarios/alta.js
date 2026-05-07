@@ -2,9 +2,10 @@ function init_usuarios_alta(){
     const contenedor = document.querySelector('.view-body');
     let html = '';
     
+    //html += creaContenedor('md');
     const IDFORM = 'altaUsuario';
     html += creaFormulario(IDFORM, 'POST');
-    html += creaInputText('nombre', 'Nombre', 6);
+    html += creaInputText('nombre', 'Nombre', 6, 'required');
     
     //ejemplo de arreglo para crear la tabla
     const datos = [
@@ -48,7 +49,7 @@ function init_usuarios_alta(){
         { id: 1, nombre: "Activo" },
         { id: 0, nombre: "Inactivo" }
     ];    
-    html += creaSelect("estado", "Estado", estados, 6);
+    html += creaSelect("estado", "Estado", estados, "required", 6);
     
     html += creaInputSoloLectura('textSL','Solo lectura',6);
     html += creaInputPass('pass', 'pasword',6,'required');
@@ -60,30 +61,33 @@ function init_usuarios_alta(){
     html += creaCierraAgrupaBotones();
             
     html += cierraFormulario();
+    //html += cierraContenedor();
  
-    Alertas.exito("No se pudo guardar el registro");
+    //Alertas.exito("No se pudo guardar el registro");
     
     //inyecta codigo generado en el DOM
     contenedor.innerHTML = html;
+    
+    //validacion JS (el attr name debe coincidir en el arreglo)
+    const reglasUsuario = {
+        nombre: ["required", { tipo: "minLength", valor: 3 }],
+        tele: ["required", "numeric"],
+        mail: ["required", "email"],
+        pass: ["required", "password", { tipo: "minLength", valor: 6 }],
+        text: ["required"],
+        genero: ["radioRequired"],
+        permisos: ["checkboxRequired"],
+        estado: ["selectRequired"],
+        fecha: ["required"]
+    };
     
     if(PAGINACION == 1){
         activaPaginacion(IDTABLA, 2);
     }
     
-    //ver si se puede meter todo esto en una funcion
-    $(document).off("submit", `#${IDFORM}`).on("submit", `#${IDFORM}`, function(e) {
-        const form = this;
-        
-        validarFormulario(form, e);
-        
-        e.preventDefault(); // evita recarga
-
-        const formData = new FormData(this);
-
-        console.log("Formulario enviado");
-        console.log([...formData.entries()]);
-
-        // Aquí puedes hacer AJAX después
-    });
+    //valida el formulario en el evento onsubmit
+    validaFormSubmit(IDFORM, reglasUsuario);
+    
+    
     
 }

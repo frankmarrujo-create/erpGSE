@@ -1,32 +1,3 @@
-    function creaAlertConfirmar(){
-        Swal.fire({
-            title: "¿Estás seguro?",
-            text: "¡No podrás revertir esto!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Sí, eliminarlo",
-            cancelButtonText: "Cancelar"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // Aquí ejecutas tu código para eliminar (AJAX o redirección)
-              Swal.fire("¡Eliminado!", "El registro ha sido borrado.", "success");
-            }
-          });
-    }
-    
-    function creaAlertExito(){
-        const azulClaro = getComputedStyle(document.documentElement).getPropertyValue('--color-azul-claro').trim();
-        Swal.fire({
-            title: "¡Guardado!",
-            text: "Los datos se han registrado correctamente",
-            icon: "success",
-            confirmButtonText: "Entendido",
-            confirmButtonColor: azulClaro
-        });
-    }
-    
     function creaBotonIcono(tipo, estilo, texto, icono, id=''){
         return `<button ${id} type="${tipo}" class="btn btn-${estilo}">
                     <i class="${icono} me-2"></i> ${texto}
@@ -94,38 +65,39 @@
     }
     
     function creaInputTelefono(name, label, tamano=12){
-        return `<div class="col-md-${tamano} mb-3">
+        return `<div class="form-group-custom col-md-${tamano} mb-3">
                     <label class="form-label">${label}</label>
                     <input type="tel" class="form-control" name="${name}" placeholder="${label}">
                 </div>`;
     }
     
     function creaInputBuscar(name, label, tamano=12){
-        return `<div class="col-md-${tamano} mb-3">
+        return `<div class="form-group-custom col-md-${tamano} mb-3">
                     <label class="form-label">${label}</label>
                     <input type="search" class="form-control" name="${name}" placeholder="${label}">
                 </div>`;
     }
     
     function creaInputMail(name, label, tamano=12, required=''){
-        return `<div class="mb-3 col-md-${tamano}">
+        return `<div class="form-group-custom mb-3 col-md-${tamano}">
                     <label for="${name}" class="form-label">${label}</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                         <input type="email" class="form-control" id="${name}" name="${name}" placeholder="ejemplo@correo.com" ${required}>
                     </div>
+                    <div class="invalid-feedback"></div>
                 </div>`;
     }
     
     function creaInputTextArea(name, label, tamano=12, required=''){
-        return `<div class="mb-3 col-md-${tamano}">
+        return `<div class="form-group-custom mb-3 col-md-${tamano}">
                     <label for="${name}" class="form-label">${label}</label>
                     <textarea class="form-control" id="${name}" name="${name}" rows="3" placeholder="${label}" ${required}></textarea>
                 </div>`;
     }
     
     function creaInputSwitch(name, label, tamano=12, checked='', required=''){
-        return `<div class="col-md-${tamano} d-flex align-items-center">
+        return `<div class="form-group-custom col-md-${tamano} d-flex align-items-center">
                     <div class="form-check form-switch mt-4">
                         <input class="form-check-input" type="checkbox" name="${name}" id="${name}" ${checked} ${required}>
                         <label class="form-check-label" for="${name}">${label}</label>
@@ -134,21 +106,21 @@
     }
     
     function creaInputFile(name, label, tamano=12, required=''){
-        return `<div class="col-md-${tamano}">
+        return `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input class="form-control" type="file" id="${name}" name="${name}"  ${required}>
                 </div>`;
     }
     
     function creaInputNumero(name, label, tamano=12, required=''){
-        return `<div class="col-md-${tamano}">
+        return `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input type="number" class="form-control" name="${name}"  ${required}>
                 </div>`;
     }
     
     function creaInputFecha(name, label, tamano=12, required=''){
-        return `<div class="col-md-${tamano}">
+        return `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input type="date" class="form-control" name="${name}"  ${required}>
                 </div>`;
@@ -156,7 +128,7 @@
     
     function creaRadioButtons(name, label, datos, tamano=12){//en el objeto datos considerar el campo valor
         var html = '';
-        html += `<div class="col-md-${tamano}">
+        html += `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label d-block">${label}</label>`;
         $.each(datos, function(i, dato) {
             html += `<div class="form-check">
@@ -170,7 +142,7 @@
     
     function creaCheckboxes(name, label, datos, tamano=12){
         var html = '';
-        html += `<div class="col-md-${tamano}">
+        html += `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label d-block">${label}</label>`;
         $.each(datos, function(i, dato) {
             html += `<div class="form-check form-check-inline">
@@ -182,12 +154,12 @@
         return html;
     }
     
-    function creaSelect(name, label, datos, tamano=12){
+    function creaSelect(name, label, datos, required='', tamano=12){
         var html = '';
-        html += `<div class="col-md-${tamano}">
+        html += `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
-                    <select class="form-select" name="${name}">
-                    <option selected>Seleccionar...</option>`;
+                    <select class="form-select" name="${name}" ${required}>
+                    <option value="" disabled selected>Seleccionar...</option>`;
         
         $.each(datos, function(i, dato) {
             html += `<option value="${dato.id}">${dato.nombre}</option>`;
@@ -199,26 +171,34 @@
     }
     
     function creaInputSoloLectura(name, label, tamano=12){
-        return `<div class="col-md-${tamano}">
+        return `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input type="text" name="${name}" class="form-control" value="REF-999" readonly>
                 </div>`;
     }
     
     function creaInputPass(name, label, tamano=12, required=''){
-        return `<div class="col-md-${tamano}">
+        return `<div class="form-group-custom col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input type="password" class="form-control" name="${name}"  ${required}>
                 </div>`;
     }
     
     function creaInputText(name, label, tamano=12, required=''){
-        return `<div class="mb-3 col-md-${tamano}">
+        return `<div class="form-group-custom mb-3 col-md-${tamano}">
                     <label class="form-label">${label}</label>
                     <input type="text" class="form-control" name="${name}" placeholder="${label}"  ${required}>
                 </div>`;
     }
-        
+     
+    function creaContenedor(size){
+        return `<div class="form-container-${size}">`;
+    }
+    
+    function cierraContenedor(){
+        return `</div>`;
+    }
+    
     function creaFormulario(id, method, action=''){
         return '<form id="' + id + '" action="' + action + '" method="' + method + '" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate><div class="row">';
     }
