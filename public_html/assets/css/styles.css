@@ -224,12 +224,21 @@
     /* ≈ 992px */
     @media (max-width: 992px) {
         /* Forzamos que el logo se oculte de inmediato en móviles */
-        body:not(.sidebar-collapsed) #logo {
+/*        body:not(.sidebar-collapsed) #logo {
             display: none;
+        }*/
+
+        #logo {
+            display: block !important;
         }
 
         /* El sidebar ocupará el ancho colapsado por defecto */
         .sidebar {
             width: var(--sidebar-collapsed);
         }
+        
+        #toggleSidebar {
+            display: none !important;
+        }
+        
     }
