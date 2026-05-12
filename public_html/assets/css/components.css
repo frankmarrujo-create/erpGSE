@@ -189,3 +189,131 @@
     .tabla-pro i {
         font-size: 14px;
     }
+    
+    /* ==============================
+        CONTENEDOR INFERIOR DATATABLE
+     ============================== */
+
+     .dataTables_wrapper .row:last-child{
+         margin-top: 1rem;
+         align-items: center;
+     }
+
+     /* ==============================
+        TEXTO "Mostrando registros"
+     ============================== */
+
+     .dataTables_info{
+         font-size: 0.85rem;
+         color: #6c757d;
+         font-weight: 500;
+         padding-top: 0.5rem !important;
+     }
+
+     /* ==============================
+        PAGINACIÓN
+     ============================== */
+
+     .dataTables_paginate{
+         display: flex;
+         justify-content: flex-end;
+     }
+
+     /* contenedor */
+     .dataTables_paginate .pagination{
+         gap: 0.35rem;
+         margin: 0;
+     }
+
+     /* botones */
+     .dataTables_paginate .page-item .page-link{
+         border: none;
+         border-radius: 0.5rem;
+         min-width: 2.2rem;
+         height: 2.2rem;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         font-size: 0.85rem;
+         font-weight: 500;
+
+         color: #495057;
+         background: #fff;
+
+         box-shadow: 0 0.1rem 0.25rem rgba(0,0,0,0.08);
+
+         transition: all 0.2s ease;
+     }
+
+     /* hover */
+     .dataTables_paginate .page-item .page-link:hover{
+         background: #0062A1;
+         color: white;
+         transform: translateY(-2px);
+     }
+
+     /* activo */
+     .dataTables_paginate .page-item.active .page-link{
+         background: #0062A1;
+         color: white;
+         box-shadow: 0 0.2rem 0.5rem rgba(0,98,161,0.3);
+     }
+
+     /* deshabilitado */
+     .dataTables_paginate .page-item.disabled .page-link{
+         opacity: 0.45;
+         cursor: not-allowed;
+         background: #f1f3f5;
+     }
+
+     /* buscador */
+    .dataTables_filter input{
+        border-radius: 0.5rem;
+        border: 1px solid #dee2e6;
+        padding: 0.45rem 0.75rem;
+        margin-left: 0.5rem;
+        transition: all 0.2s ease;
+    }
+
+    .dataTables_filter input:focus{
+        border-color: #0062A1;
+        box-shadow: 0 0 0 0.15rem rgba(0,98,161,0.2);
+        outline: none;
+    }
+     
+    .dataTables_length select{
+        border-radius: 0.5rem;
+        border: 1px solid #dee2e6;
+        padding: 0.35rem 2rem 0.35rem 0.75rem;
+    }
+    
+    table.dataTable{
+        border-collapse: separate !important;
+        border-spacing: 0;
+    }
+
+    table.dataTable tbody tr{
+        transition: all 0.2s ease;
+    }
+
+    table.dataTable tbody tr:hover{
+        background: rgba(0,98,161,0.04);
+    }
+    
+     /* ==============================
+        RESPONSIVE
+     ============================== */
+
+     @media (max-width: 768px){
+
+         .dataTables_wrapper .row:last-child{
+             flex-direction: column;
+             gap: 1rem;
+             text-align: center;
+         }
+
+         .dataTables_paginate{
+             justify-content: center;
+         }
+     }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ERP</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="assets/css/login.css" rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <!-- LADO IZQUIERDO (branding) -->
+        <div class="login-left d-none d-md-flex">
+            <div class="login-content">
+
+                <img src="assets/img/login.png" class="login-illustration">
+
+                <div class="login-overlay">
+                    <h1 class="fw-bold">ERP GSE</h1>
+                    <p>Gestión inteligente</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LADO DERECHO (formulario) -->
+        <div class="login-right d-flex align-items-center justify-content-center">
+
+            <div class="login-card">
+
+                <div class="text-center mb-4">
+                    <img src="assets/img/logo.png" height="60">
+                    <h5 class="mt-3">Bienvenido</h5>
+                    <small class="text-muted">Inicia sesión para continuar</small>
+                </div>
+
+                <form id="loginForm">
+
+                    <!-- Usuario -->
+                    <div class="mb-3">
+                        <label class="form-label">Usuario</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" name="user" required>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" name="password" required>
+                            <button type="button" class="btn btn-outline-secondary" id="togglePass">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recordar -->
+                    <!--<div class="d-flex justify-content-between mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Recordarme</label>
+                        </div>
+                        <a href="#" class="small">¿Olvidaste tu contraseña?</a>
+                    </div>-->
+
+                    <!-- Botón -->
+                    <button type="submit" class="btn btn-primary w-100 login-btn">
+                        Iniciar sesión
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
